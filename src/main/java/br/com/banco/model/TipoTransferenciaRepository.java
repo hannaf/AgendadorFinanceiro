@@ -36,7 +36,7 @@ public class TipoTransferenciaRepository {
 	}
 	
 	private BigDecimal calculoTipoA(BigDecimal valor) {
-		return null;
+		return valor.multiply(new BigDecimal("0.03")).add(new BigDecimal("2"));
 	}
 	
 	private BigDecimal calculoTipoB(BigDecimal valor) {
