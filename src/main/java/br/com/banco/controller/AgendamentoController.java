@@ -1,7 +1,12 @@
 package br.com.banco.controller;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
+import br.com.banco.model.ITransferencia;
+import br.com.banco.model.TipoTransferencia;
+import br.com.banco.model.vo.TransferenciaVO;
 import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Result;
 
@@ -9,6 +14,13 @@ import br.com.caelum.vraptor.Result;
 public class AgendamentoController {
 	
 	private final Result result;
+	
+	@Inject
+	private ITransferencia transferencia;
+	
+	private TransferenciaVO transferenciaVO;
+	
+	private List<TipoTransferencia> tiposLista;
 	
 	protected AgendamentoController(){
 		this(null);
@@ -20,6 +32,7 @@ public class AgendamentoController {
 	}
 	
 	public void transfere(){
+		result.include("tiposLista", this.transferencia.recuperaTiposTransferencia());
+		
 	}
-
 }

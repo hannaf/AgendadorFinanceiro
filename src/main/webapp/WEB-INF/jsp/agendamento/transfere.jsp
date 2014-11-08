@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
@@ -9,5 +9,34 @@
 </head>
 <body>
 	<h1>Agendar Transferência</h1>
+
+	<form method="post" action="">
+		<ul>
+			<li><label for="contaOrigem">Conta de Origem</label>
+				<input id="contaOrigem" type="text" name="transferencia.contaOrigem">
+			</li>
+			<li><label for="contaDestino">Conta Destino</label>
+				<input id="contaDestino" type="text" name="transferencia.contaOrigem">
+			</li>
+			<li><label for="valor">Valor</label>
+				<input id="valor" type="text" name="transferencia.valor">
+			</li>
+			<li><label for="taxa">Taxa</label>
+				<input id="taxa" type="text" name="transferencia.taxa">
+			</li>
+			<li><label for="data">Data da Transferência</label>
+				<input id="dataAgendamento" type="text" name="transferencia.dataAgendamento">
+			</li>
+			<li><label for="">Tipo</label> 
+				<select name="transferencia.tipo">
+					<c:forEach items="${tiposLista}" var="tipo">
+						<option value="${tipo.id}">${tipo.nome}</option>
+					</c:forEach>
+				</select>
+			</li>
+		</ul>
+		<input type="submit" value="Confirmar">
+	</form>
+
 </body>
 </html>
