@@ -1,5 +1,6 @@
 package br.com.banco.controller;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -33,6 +34,9 @@ public class AgendamentoController {
 	
 	public void transfere(){
 		result.include("tiposLista", this.transferencia.recuperaTiposTransferencia());
-		
+		TipoTransferencia tipo = new TipoTransferencia();
+		tipo.setNome("D");
+		this.transferencia.calculaTaxa(tipo, new BigDecimal("120000.00001"));
 	}
+	
 }
