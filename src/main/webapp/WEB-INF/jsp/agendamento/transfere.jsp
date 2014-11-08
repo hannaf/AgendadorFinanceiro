@@ -13,19 +13,19 @@
 	<form method="post" action="">
 		<ul>
 			<li><label for="contaOrigem">Conta de Origem</label>
-				<input id="contaOrigem" type="text" name="transferencia.contaOrigem">
+				<input id="contaOrigem" type="number" name="transferencia.contaOrigem">
 			</li>
 			<li><label for="contaDestino">Conta Destino</label>
-				<input id="contaDestino" type="text" name="transferencia.contaOrigem">
+				<input id="contaDestino" type="number" name="transferencia.contaOrigem">
 			</li>
 			<li><label for="valor">Valor</label>
-				<input id="valor" type="text" name="transferencia.valor">
+				<input id="valor" type="number" name="transferencia.valor">
 			</li>
 			<li><label for="taxa">Taxa</label>
-				<input id="taxa" type="text" name="transferencia.taxa">
+				<input id="taxa" type="number" name="transferencia.taxa">
 			</li>
 			<li><label for="data">Data da Transferência</label>
-				<input id="dataAgendamento" type="text" name="transferencia.dataAgendamento">
+				<input id="dataAgendamento" type="date" name="transferencia.dataAgendamento">
 			</li>
 			<li><label for="">Tipo</label> 
 				<select name="transferencia.tipo">
