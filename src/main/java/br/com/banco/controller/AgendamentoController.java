@@ -1,17 +1,13 @@
 package br.com.banco.controller;
 
-import java.math.BigDecimal;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import javax.inject.Inject;
+import javax.validation.Valid;
 
-import br.com.banco.model.TipoTransferencia;
 import br.com.banco.model.Transferencia;
 import br.com.banco.model.facade.ITransferencia;
 import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Result;
+import br.com.caelum.vraptor.validator.Validator;
 
 @Controller
 public class AgendamentoController {
@@ -21,20 +17,24 @@ public class AgendamentoController {
 	@Inject
 	private ITransferencia transferenciaFacade;
 	
+	private Validator validator;
+	
 	protected AgendamentoController(){
-		this(null);
+		this(null,null);
 	}
 	
 	@Inject
-	public AgendamentoController(Result result){
+	public AgendamentoController(Result result, Validator validator){
 		this.result = result;
+		this.validator = validator;
 	}
 	
 	public void transfere(){
 		result.include("tiposLista", this.transferenciaFacade.recuperaTiposTransferencia());
 	}
 	
-	public void confirma(Transferencia transferencia){
+	public void confirma(@Valid Transferencia transferencia){
+		validator.onErrorRedirectTo(this).transfere();
 		validaCampos(transferencia);
 		this.transferenciaFacade.cadastraTransferencia(transferencia);
 	}
