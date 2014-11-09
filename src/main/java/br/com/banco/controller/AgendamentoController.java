@@ -31,12 +31,15 @@ public class AgendamentoController {
 	
 	public void transfere(){
 		result.include("tiposLista", this.transferenciaFacade.recuperaTiposTransferencia());
+		result.include("transferencias", this.transferenciaFacade.recuperaTransferencias());
 	}
 	
 	public void confirma(@Valid Transferencia transferencia){
+		//TODO arrumar mensagens e validações
 		validator.onErrorRedirectTo(this).transfere();
 		validaCampos(transferencia);
 		this.transferenciaFacade.cadastraTransferencia(transferencia);
+		result.forwardTo(this).transfere();
 	}
 
 	private void validaCampos(Transferencia transferencia) {

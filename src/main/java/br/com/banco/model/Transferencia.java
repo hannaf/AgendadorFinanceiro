@@ -3,32 +3,23 @@ package br.com.banco.model;
 import java.math.BigDecimal;
 import java.util.Date;
 
-import javax.validation.constraints.DecimalMin;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
-
-import org.hibernate.validator.constraints.NotEmpty;
 
 public class Transferencia {
 	
-	@Min(6)
-	@Max(6)
 	private int contaOrigem;
 	
-	@Min(6)
-	@Max(6)
 	private int contaDestino;
 	
-	@NotNull(message = "Teste")
+	@NotNull(message = "{campo.obrigatorio}")
 	private BigDecimal valor;
 	
 	private BigDecimal taxa;
 	
-	@NotNull(message = "Teste")
+	@NotNull(message = "{campo.obrigatorio}")
 	private Date dataAgendamento;
 	
-	@NotNull(message = "Teste")
+	@NotNull(message = "{campo.obrigatorio}")
 	private TipoTransferencia tipo;
 
 	public int getContaOrigem() {

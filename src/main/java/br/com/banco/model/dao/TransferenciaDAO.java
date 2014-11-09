@@ -17,5 +17,9 @@ public class TransferenciaDAO {
 		//TODO Persistir em banco
 		transferencias.add(transferencia);
 	}
+	
+	public List<Transferencia> recuperaTransferencias(){
+		return transferencias;
+	}
 
 }

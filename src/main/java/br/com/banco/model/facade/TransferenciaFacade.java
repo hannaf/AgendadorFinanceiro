@@ -33,5 +33,9 @@ public class TransferenciaFacade implements ITransferencia {
 	public void cadastraTransferencia(Transferencia transferencia) {
 		this.transferenciaRepository.cadastra(transferencia);
 	}
+	
+	public List<Transferencia> recuperaTransferencias(){
+		return this.transferenciaRepository.recuperaTransferencias();
+	}
 
 }

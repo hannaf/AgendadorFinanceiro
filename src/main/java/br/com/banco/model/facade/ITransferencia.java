@@ -15,4 +15,6 @@ public interface ITransferencia {
 	
 	void cadastraTransferencia(Transferencia transferencia);
 
+	List<Transferencia> recuperaTransferencias();
+	
 }

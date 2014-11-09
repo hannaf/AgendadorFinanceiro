@@ -21,7 +21,7 @@
 				type="text" name="transferencia.contaOrigem" maxlength="7">
 			</li>
 			<li><label for="contaDestino">Conta Destino</label> <input
-				type="text" name="transferencia.contaOrigem" maxlength="7">
+				type="text" name="transferencia.contaDestino" maxlength="7">
 			</li>
 			<li><label for="valor">Valor</label> <input type="text"
 				name="transferencia.valor" maxlength="18"></li>
@@ -31,7 +31,8 @@
 			<li><label for="data">Data da Transferência</label> <input
 				type="text" name="transferencia.dataAgendamento" maxlength="10">
 			</li>
-			<li><label for="">Tipo</label> <select name="transferencia.tipo">
+			<li><label for="">Tipo</label> <select name="transferencia.tipo" >
+					<option >Selecione</option>
 					<c:forEach items="${tiposLista}" var="tipo">
 						<option value="${tipo.id}">${tipo.nome}</option>
 					</c:forEach>
@@ -39,6 +40,30 @@
 		</ul>
 		<input type="submit" value="Confirmar">
 	</form>
+	
+	
+	<table>
+		<thead>
+			<tr>
+				<td>Conta Destino</td>
+				<td>Valor</td>
+				<td>Data Agendada</td>
+				<td>Tipo</td>
+				<td>Taxa</td>
+			</tr>
+		</thead>
+		<tbody>
+			<c:forEach items="${transferencias}" var="transferencia">
+				<tr>
+					<td>${transferencia.contaDestino}</td>
+					<td>${transferencia.valor}</td>
+					<td>${transferencia.dataAgendamento}</td>
+					<td>${transferencia.tipo}</td>
+					<td>${transferencia.taxa}</td>
+				</tr>	
+			</c:forEach>	
+		</tbody>
+	</table>
 
 </body>
 </html>
