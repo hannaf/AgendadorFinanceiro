@@ -1,13 +1,15 @@
 package br.com.banco.controller;
 
 import java.math.BigDecimal;
-import java.util.List;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.inject.Inject;
 
-import br.com.banco.model.ITransferencia;
 import br.com.banco.model.TipoTransferencia;
-import br.com.banco.model.vo.TransferenciaVO;
+import br.com.banco.model.Transferencia;
+import br.com.banco.model.facade.ITransferencia;
 import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Result;
 
@@ -17,11 +19,7 @@ public class AgendamentoController {
 	private final Result result;
 	
 	@Inject
-	private ITransferencia transferencia;
-	
-	private TransferenciaVO transferenciaVO;
-	
-	private List<TipoTransferencia> tiposLista;
+	private ITransferencia transferenciaFacade;
 	
 	protected AgendamentoController(){
 		this(null);
@@ -33,10 +31,16 @@ public class AgendamentoController {
 	}
 	
 	public void transfere(){
-		result.include("tiposLista", this.transferencia.recuperaTiposTransferencia());
-		TipoTransferencia tipo = new TipoTransferencia();
-		tipo.setNome("D");
-		this.transferencia.calculaTaxa(tipo, new BigDecimal("120000.00001"));
+		result.include("tiposLista", this.transferenciaFacade.recuperaTiposTransferencia());
+	}
+	
+	public void confirma(Transferencia transferencia){
+		validaCampos(transferencia);
+		this.transferenciaFacade.cadastraTransferencia(transferencia);
+	}
+
+	private void validaCampos(Transferencia transferencia) {
+		
 	}
 	
 }

@@ -1,4 +1,4 @@
-package br.com.banco.model;
+package br.com.banco.model.repository;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -8,6 +8,9 @@ import javax.inject.Inject;
 
 import org.joda.time.DateTime;
 import org.joda.time.Days;
+
+import br.com.banco.model.TipoTransferencia;
+import br.com.banco.model.dao.TipoTransferenciaDAO;
 
 public class TipoTransferenciaRepository {
 

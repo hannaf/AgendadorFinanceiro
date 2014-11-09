@@ -1,11 +1,9 @@
-package br.com.banco.model.vo;
+package br.com.banco.model;
 
 import java.math.BigDecimal;
 import java.util.Date;
 
-import br.com.banco.model.TipoTransferencia;
-
-public class TransferenciaVO {
+public class Transferencia {
 	
 	private int contaOrigem;
 	

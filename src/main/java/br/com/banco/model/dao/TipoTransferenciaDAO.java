@@ -1,7 +1,9 @@
-package br.com.banco.model;
+package br.com.banco.model.dao;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import br.com.banco.model.TipoTransferencia;
 
 public class TipoTransferenciaDAO {
 
