@@ -10,22 +10,22 @@
 <body>
 	<h1>Agendar Transferência</h1>
 
-	<form method="post" action="">
+	<form method="post" action="${linkTo[AgendamentoController].confirma}">
 		<ul>
 			<li><label for="contaOrigem">Conta de Origem</label>
-				<input id="contaOrigem" type="number" name="transferencia.contaOrigem">
+				<input type="text" name="transferencia.contaOrigem" maxlength="7">
 			</li>
 			<li><label for="contaDestino">Conta Destino</label>
-				<input id="contaDestino" type="number" name="transferencia.contaOrigem">
+				<input type="text" name="transferencia.contaOrigem" maxlength="7">
 			</li>
 			<li><label for="valor">Valor</label>
-				<input id="valor" type="number" name="transferencia.valor">
+				<input type="text" name="transferencia.valor" maxlength="18">
 			</li>
 			<li><label for="taxa">Taxa</label>
-				<input id="taxa" type="number" name="transferencia.taxa">
+				<input type="text" name="transferencia.taxa" disabled="disabled" maxlength="18">
 			</li>
 			<li><label for="data">Data da Transferência</label>
-				<input id="dataAgendamento" type="date" name="transferencia.dataAgendamento">
+				<input type="text" name="transferencia.dataAgendamento" maxlength="10">
 			</li>
 			<li><label for="">Tipo</label> 
 				<select name="transferencia.tipo">
