@@ -12,10 +12,10 @@ import br.com.banco.model.repository.TipoTransferenciaRepository;
 import br.com.banco.model.repository.TransferenciaRepository;
 
 public class TransferenciaFacade implements ITransferencia {
-	
+
 	@Inject
 	private TipoTransferenciaRepository tipoRepository;
-	
+
 	@Inject
 	private TransferenciaRepository transferenciaRepository;
 
@@ -25,16 +25,20 @@ public class TransferenciaFacade implements ITransferencia {
 	}
 
 	@Override
-	public BigDecimal calculaTaxa(TipoTransferencia tipo, BigDecimal valor, Date dtAgendamento) {
+	public BigDecimal calculaTaxa(TipoTransferencia tipo, BigDecimal valor,
+			Date dtAgendamento) {
 		return this.tipoRepository.calculaTaxa(tipo, valor, dtAgendamento);
 	}
 
 	@Override
 	public void cadastraTransferencia(Transferencia transferencia) {
+		transferencia.setTaxa(this.tipoRepository.calculaTaxa(
+				transferencia.getTipo(), transferencia.getValor(),
+				transferencia.getDataAgendamento()));
 		this.transferenciaRepository.cadastra(transferencia);
 	}
-	
-	public List<Transferencia> recuperaTransferencias(){
+
+	public List<Transferencia> recuperaTransferencias() {
 		return this.transferenciaRepository.recuperaTransferencias();
 	}
 

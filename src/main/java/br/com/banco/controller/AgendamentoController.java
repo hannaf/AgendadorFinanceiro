@@ -1,13 +1,19 @@
 package br.com.banco.controller;
 
+import java.math.BigDecimal;
+import java.util.Date;
+
 import javax.inject.Inject;
 import javax.validation.Valid;
 
 import br.com.banco.model.Transferencia;
 import br.com.banco.model.facade.ITransferencia;
 import br.com.caelum.vraptor.Controller;
+import br.com.caelum.vraptor.Get;
+import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.validator.Validator;
+import br.com.caelum.vraptor.view.Results;
 
 @Controller
 public class AgendamentoController {
@@ -29,6 +35,7 @@ public class AgendamentoController {
 		this.validator = validator;
 	}
 	
+	@Path("/transferencia")
 	public void transfere(){
 		result.include("tiposLista", this.transferenciaFacade.recuperaTiposTransferencia());
 		result.include("transferencias", this.transferenciaFacade.recuperaTransferencias());
@@ -45,5 +52,15 @@ public class AgendamentoController {
 	private void validaCampos(Transferencia transferencia) {
 		
 	}
+	
+//	@Get("/transferencia/calculo")
+//	public void calculaTaxa(Integer tipo, String valor, String data){
+//		//BigDecimal taxa = this.transferenciaFacade.calculaTaxa(tipo, new BigDecimal(valor), converteData(data));
+//		result.use(Results.json()).withoutRoot().from(taxa).serialize();
+//	}
+//	
+//	public Date converteData(String data){
+//		return null;
+//	}
 	
 }

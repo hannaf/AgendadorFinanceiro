@@ -23,14 +23,14 @@ public class TipoTransferenciaRepository {
 
 	public BigDecimal calculaTaxa(TipoTransferencia tipo, BigDecimal valor,
 			Date dtAgendamento) {
-		switch (tipo.getNome()) {
-		case "A":
+		switch (tipo.getId()) {
+		case 1:
 			return calculoTipoA(valor);
-		case "B":
+		case 2:
 			return calculoTipoB(dtAgendamento);
-		case "C":
+		case 3:
 			return calculoTipoC(valor, dtAgendamento);
-		case "D":
+		case 4:
 			if (valor.compareTo(new BigDecimal("25000")) <= 0) {
 				return calculoTipoA(valor);
 			} else if (valor.compareTo(new BigDecimal("120000")) > 0) {

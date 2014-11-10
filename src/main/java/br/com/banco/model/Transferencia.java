@@ -7,9 +7,11 @@ import javax.validation.constraints.NotNull;
 
 public class Transferencia {
 	
-	private int contaOrigem;
+	private Integer id;
 	
-	private int contaDestino;
+	private Integer contaOrigem;
+	
+	private Integer contaDestino;
 	
 	@NotNull(message = "{campo.obrigatorio}")
 	private BigDecimal valor;
@@ -21,20 +23,30 @@ public class Transferencia {
 	
 	@NotNull(message = "{campo.obrigatorio}")
 	private TipoTransferencia tipo;
+	
+	private StatusTransferencia status;
 
-	public int getContaOrigem() {
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public Integer getContaOrigem() {
 		return contaOrigem;
 	}
 
-	public void setContaOrigem(int contaOrigem) {
+	public void setContaOrigem(Integer contaOrigem) {
 		this.contaOrigem = contaOrigem;
 	}
 
-	public int getContaDestino() {
+	public Integer getContaDestino() {
 		return contaDestino;
 	}
 
-	public void setContaDestino(int contaDestino) {
+	public void setContaDestino(Integer contaDestino) {
 		this.contaDestino = contaDestino;
 	}
 
@@ -70,6 +82,12 @@ public class Transferencia {
 		this.tipo = tipo;
 	}
 
-	
+	public StatusTransferencia getStatus() {
+		return status;
+	}
+
+	public void setStatus(StatusTransferencia status) {
+		this.status = status;
+	}
 	
 }

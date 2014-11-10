@@ -6,17 +6,17 @@ public class TipoTransferencia implements Serializable {
 	
 	private static final long serialVersionUID = -6698923607071728883L;
 
-	private Long id;
+	private Integer id;
 	
 	private String nome;
 	
 	private String descricao;
 
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

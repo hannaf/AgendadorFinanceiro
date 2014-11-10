@@ -28,18 +28,18 @@
 			</li>
 			<li><label for="valor">Valor</label> <input type="text"
 				name="transferencia.valor" maxlength="18"></li>
-			<li><label for="taxa">Taxa</label> <input type="text"
-				name="transferencia.taxa" disabled="disabled" maxlength="18">
-			</li>
 			<li><label for="data">Data da Transferência</label> <input
 				type="text" name="transferencia.dataAgendamento" maxlength="10">
 			</li>
-			<li><label for="">Tipo</label> <select name="transferencia.tipo">
+			<li><label for="">Tipo</label> <select id="tipo" name="transferencia.tipo.id">
 					<option>Selecione</option>
 					<c:forEach items="${tiposLista}" var="tipo">
 						<option value="${tipo.id}">${tipo.nome}</option>
 					</c:forEach>
 			</select></li>
+			<li><label for="taxa">Taxa</label> <input type="text"
+				name="transferencia.taxa" disabled="disabled" maxlength="18">
+			</li>
 		</ul>
 		<input type="submit" value="Confirmar">
 	</form>
@@ -53,6 +53,7 @@
 				<td>Data Agendada</td>
 				<td>Tipo</td>
 				<td>Taxa</td>
+				<td>Status</td>
 			</tr>
 		</thead>
 		<tbody>
@@ -63,15 +64,38 @@
 					<td>${transferencia.dataAgendamento}</td>
 					<td>${transferencia.tipo}</td>
 					<td>${transferencia.taxa}</td>
+					<td>${transferencia.status}</td>
 				</tr>
 			</c:forEach>
 		</tbody>
 	</table>
 
 	<script type="text/javascript">
-		$(document).ready(function() {
-			alert("jQuery");
-		});
+// 		$(document).ready(function() {
+// 			$("#tipo").on('change',function(){
+// 				var self = $(this);  
+// 			    var selecionado = self.val();
+// 			    var dataAgendamento = self.val();
+// 			    var valor = self.val();
+// 			    $.ajax({
+// 					url:'/transferencia/calculo',
+// 					data:{id:selecionado},
+// 					dataType:'json',
+// 			         success:function(data){  
+// 			             // Precisa transformar de json para objeto html  
+// 			             var options = [];  
+// 			             options.push(' <option>Selecione</option> '); // colocando a primeira option...  
+// 			             for (var i = 0; i < data.length; i++) {  
+// 			                options.push('<option value="'+data[i].id+'">'+data[i].nome+'</option>');  
+// 			             }  
+// 			             $('#cidadesSelect').html(options.join(''));  
+// 			          },  
+// 			          error:function(){  
+// 			             alert('erro');  
+// 			          }  
+// 				});
+// 			});
+// 		});
 	</script>
 
 </body>
