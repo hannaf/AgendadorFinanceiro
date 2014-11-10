@@ -6,13 +6,16 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
+	<script type="text/javascript" src="../resources/js/jquery-2.1.1.min.js"></script>
 </head>
 <body>
+
+
+
 	<h1>Agendar Transferência</h1>
 
 	<c:forEach items="${errors}" var="error">
-		<li>${error.category}: ${error.message} 
-		</li>
+		<li>${error.category}:${error.message}</li>
 	</c:forEach>
 
 	<form method="post" action="${linkTo[AgendamentoController].confirma}">
@@ -31,8 +34,8 @@
 			<li><label for="data">Data da Transferência</label> <input
 				type="text" name="transferencia.dataAgendamento" maxlength="10">
 			</li>
-			<li><label for="">Tipo</label> <select name="transferencia.tipo" >
-					<option >Selecione</option>
+			<li><label for="">Tipo</label> <select name="transferencia.tipo">
+					<option>Selecione</option>
 					<c:forEach items="${tiposLista}" var="tipo">
 						<option value="${tipo.id}">${tipo.nome}</option>
 					</c:forEach>
@@ -40,8 +43,8 @@
 		</ul>
 		<input type="submit" value="Confirmar">
 	</form>
-	
-	
+
+
 	<table>
 		<thead>
 			<tr>
@@ -60,10 +63,16 @@
 					<td>${transferencia.dataAgendamento}</td>
 					<td>${transferencia.tipo}</td>
 					<td>${transferencia.taxa}</td>
-				</tr>	
-			</c:forEach>	
+				</tr>
+			</c:forEach>
 		</tbody>
 	</table>
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+			alert("jQuery");
+		});
+	</script>
 
 </body>
 </html>
