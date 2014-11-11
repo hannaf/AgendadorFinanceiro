@@ -5,39 +5,55 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 import javax.validation.constraints.Digits;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import com.google.gson.annotations.Since;
-
+/**
+ * 
+ * @author Hanna
+ *
+ */
 public class Transferencia implements Serializable {
 
 	private static final long serialVersionUID = 1053016088998833390L;
-
+	
+	/**
+	 * Atributo identificador
+	 */
 	private Integer id;
 	
+	/**
+	 * Conda de origem
+	 */
 	@NotNull(message = "{campo.obrigatorio}")
 	@Size(min=5 , max=6, message="{conta.invalida}")
 	private String contaOrigem;
 	
+	/**
+	 * Conda destino
+	 */
 	@NotNull(message = "{campo.obrigatorio}")
 	@Size(min=5 , max=6, message="{conta.invalida}")
 	private String contaDestino;
 	
+	/**
+	 * Valor
+	 */
 	@NotNull(message = "{campo.obrigatorio}")
 	@Digits(integer=12, fraction=2, message="{valor.invalido}")
 	private BigDecimal valor;
 	
+	/**
+	 * Taxa sobre a transferência
+	 */
 	private BigDecimal taxa;
 	
+	/**
+	 * Tipo de transferência
+	 */
 	@NotNull(message = "{campo.obrigatorio}")
 	private Date dataAgendamento;
-	
 	private TipoTransferencia tipo;
-	
-	private StatusTransferencia status;
 
 	public Integer getId() {
 		return id;
@@ -95,12 +111,4 @@ public class Transferencia implements Serializable {
 		this.tipo = tipo;
 	}
 
-	public StatusTransferencia getStatus() {
-		return status;
-	}
-
-	public void setStatus(StatusTransferencia status) {
-		this.status = status;
-	}
-	
 }

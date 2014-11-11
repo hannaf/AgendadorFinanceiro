@@ -11,25 +11,51 @@ import br.com.banco.model.Transferencia;
 import br.com.banco.model.repository.TipoTransferenciaRepository;
 import br.com.banco.model.repository.TransferenciaRepository;
 
+/**
+ * 
+ * @author Hanna
+ *
+ */
 public class TransferenciaFacade implements ITransferencia {
 
+	/**
+	 * TipoTransferenciaRepository
+	 */
 	@Inject
 	private TipoTransferenciaRepository tipoRepository;
 
+	/**
+	 * TransferenciaRepository
+	 */
 	@Inject
 	private TransferenciaRepository transferenciaRepository;
 
+	/**
+	 * Recupera tipos de transferência cadastrados
+	 * @return List<TipoTransferencia>
+	 */
 	@Override
 	public List<TipoTransferencia> recuperaTiposTransferencia() {
 		return this.tipoRepository.recuperaTiposTransferencia();
 	}
 
+	/**
+	 * Calcula valor da taxa de transferência
+	 * @param tipo
+	 * @param valor
+	 * @param dtAgendamento
+	 * @return BigDecimal
+	 */
 	@Override
 	public BigDecimal calculaTaxa(TipoTransferencia tipo, BigDecimal valor,
 			Date dtAgendamento) {
 		return this.tipoRepository.calculaTaxa(tipo, valor, dtAgendamento);
 	}
 
+	/**
+	 * Cadastra transferências
+	 * @param transferencia
+	 */
 	@Override
 	public void cadastraTransferencia(Transferencia transferencia) {
 		transferencia.setTaxa(this.tipoRepository.calculaTaxa(
@@ -38,6 +64,10 @@ public class TransferenciaFacade implements ITransferencia {
 		this.transferenciaRepository.cadastra(transferencia);
 	}
 
+	/**
+	 * Recupera transferências cadastradas
+	 * @return List<Transferencia>
+	 */
 	public List<Transferencia> recuperaTransferencias() {
 		return this.transferenciaRepository.recuperaTransferencias();
 	}

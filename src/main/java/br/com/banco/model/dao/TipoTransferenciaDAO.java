@@ -5,8 +5,17 @@ import java.util.List;
 
 import br.com.banco.model.TipoTransferencia;
 
+/**
+ * 
+ * @author Hanna
+ *
+ */
 public class TipoTransferenciaDAO {
 
+	/**
+	 * Recupera tipos de transferência cadastrados
+	 * @return List<TipoTransferencia>
+	 */
 	public List<TipoTransferencia> recuperaTiposTransferencia() {
 		//TODO Persistir em banco
 		
