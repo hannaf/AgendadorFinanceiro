@@ -1,19 +1,33 @@
 package br.com.banco.model;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
-public class Transferencia {
-	
+import com.google.gson.annotations.Since;
+
+public class Transferencia implements Serializable {
+
+	private static final long serialVersionUID = 1053016088998833390L;
+
 	private Integer id;
 	
-	private Integer contaOrigem;
-	
-	private Integer contaDestino;
+	@NotNull(message = "{campo.obrigatorio}")
+	@Size(min=5 , max=6, message="{conta.invalida}")
+	private String contaOrigem;
 	
 	@NotNull(message = "{campo.obrigatorio}")
+	@Size(min=5 , max=6, message="{conta.invalida}")
+	private String contaDestino;
+	
+	@NotNull(message = "{campo.obrigatorio}")
+	@Digits(integer=12, fraction=2, message="{valor.invalido}")
 	private BigDecimal valor;
 	
 	private BigDecimal taxa;
@@ -21,7 +35,6 @@ public class Transferencia {
 	@NotNull(message = "{campo.obrigatorio}")
 	private Date dataAgendamento;
 	
-	@NotNull(message = "{campo.obrigatorio}")
 	private TipoTransferencia tipo;
 	
 	private StatusTransferencia status;
@@ -34,19 +47,19 @@ public class Transferencia {
 		this.id = id;
 	}
 
-	public Integer getContaOrigem() {
+	public String getContaOrigem() {
 		return contaOrigem;
 	}
 
-	public void setContaOrigem(Integer contaOrigem) {
+	public void setContaOrigem(String contaOrigem) {
 		this.contaOrigem = contaOrigem;
 	}
 
-	public Integer getContaDestino() {
+	public String getContaDestino() {
 		return contaDestino;
 	}
 
-	public void setContaDestino(Integer contaDestino) {
+	public void setContaDestino(String contaDestino) {
 		this.contaDestino = contaDestino;
 	}
 

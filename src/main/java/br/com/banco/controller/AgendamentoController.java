@@ -1,19 +1,15 @@
 package br.com.banco.controller;
 
-import java.math.BigDecimal;
-import java.util.Date;
-
 import javax.inject.Inject;
 import javax.validation.Valid;
 
 import br.com.banco.model.Transferencia;
 import br.com.banco.model.facade.ITransferencia;
 import br.com.caelum.vraptor.Controller;
-import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Result;
+import br.com.caelum.vraptor.validator.I18nMessage;
 import br.com.caelum.vraptor.validator.Validator;
-import br.com.caelum.vraptor.view.Results;
 
 @Controller
 public class AgendamentoController {
@@ -50,7 +46,11 @@ public class AgendamentoController {
 	}
 
 	private void validaCampos(Transferencia transferencia) {
-		
+		if(transferencia.getTipo().getId() == null 
+				||transferencia.getTipo().getId() == 0){
+			validator.add(new I18nMessage("tipo", "campo.obrigatorio"));
+		}
+		validator.onErrorRedirectTo(this).transfere();
 	}
 	
 //	@Get("/transferencia/calculo")

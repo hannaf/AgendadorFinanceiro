@@ -32,7 +32,7 @@
 				type="text" name="transferencia.dataAgendamento" maxlength="10">
 			</li>
 			<li><label for="">Tipo</label> <select id="tipo" name="transferencia.tipo.id">
-					<option>Selecione</option>
+					<option value="0">Selecione</option>
 					<c:forEach items="${tiposLista}" var="tipo">
 						<option value="${tipo.id}">${tipo.nome}</option>
 					</c:forEach>
