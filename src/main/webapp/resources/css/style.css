@@ -1,0 +1,106 @@
+body {
+	background: #F5F5F5;
+	margin: 0px;
+}
+
+.principal {
+	border-radius: 5px;
+	background-color: #ffffff;
+	width: 95%;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 5px;
+	list-style-type: none;
+}
+
+.erro {
+	background: #FA8072;
+	border-radius: 3px;
+	margin-top: 3px;
+	list-style-type: none;
+}
+
+.sucesso {
+	background: #98FB98;
+	border-radius: 3px;
+	margin-top: 3px;
+}
+
+.formulario {
+	width: 30%;
+	padding: 15px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.formulario h2 {
+	margin: auto;
+	border-bottom: 2px solid #DCDCDC;
+}
+
+.formulario ul{
+	list-style-type: none;
+}
+
+.formulario input[type=text],.formulario select {
+	width: 90%;
+	margin-right: 50px;
+}
+
+.formulario label {
+	width: 50%;
+}
+
+.formulario input[type=submit] {
+	float: right;
+}
+
+.tabela {
+	width: 80%;
+	padding: 15px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.tabela h2 {
+	margin: auto;
+}
+
+.tabela table {
+	border-radius: 5px;
+	border: 1px solid #888888;
+	background-color: #8585AD;
+	margin-left: auto;
+	margin-right: auto;
+	width: 100%;
+}
+
+.tabela thead tr {
+	border: 1px solid black;
+}
+
+.tabela thead td{
+	border-right: 1px solid #646464;
+	text-align: center;
+	font-weight: bold;
+}
+
+.tabela tbody td {
+	border-top: 1px solid #B2B2B2;
+}
+
+.tabela .linhaimpar {
+	background-color: #DADAE6;
+}
+
+.tabela .linhapar {
+	background-color: #FCFCFC;
+}
+
+.tabela .linhapar td, .tabela .linhaimpar td{
+	border-right: 1px solid #B2B2B2;
+}
+
+.tabela .lista-vazia {
+	text-align: center;
+}
