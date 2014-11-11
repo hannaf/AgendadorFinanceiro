@@ -3,9 +3,6 @@ package br.com.banco.model.dao;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.faces.bean.RequestScoped;
-import javax.websocket.Session;
-
 import br.com.banco.model.Transferencia;
 
 /**
@@ -13,31 +10,20 @@ import br.com.banco.model.Transferencia;
  * @author Hanna
  *
  */
-@RequestScoped
 public class TransferenciaDAO {
 	
 	/**
-	 * Session
+	 * Lista transferência
 	 */
-	private Session session;
+	private List<Transferencia> transferencias;
 	
-
 	/**
 	 * Construtor
 	 */
 	public TransferenciaDAO() {
-		this(null);
+		transferencias = new ArrayList<Transferencia>();
 	}
 	
-	/**
-	 * Construtor
-	 */	
-	public TransferenciaDAO(Session session) {
-		this.session = session;
-		List<Transferencia> transferencias = new ArrayList<Transferencia>();
-		session.
-	}
-
 	/**
 	 * Cadastra transferências
 	 * @param transferencia
