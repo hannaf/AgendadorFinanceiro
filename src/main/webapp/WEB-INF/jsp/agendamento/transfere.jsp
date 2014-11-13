@@ -7,7 +7,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 	<title>Agendar Transferencia</title>
-	<script type="text/javascript" src="../resources/js/jquery-2.1.1.min.js"></script>
+	<script type="text/javascript" src="<c:url value="resources/js/jquery-2.1.1.min.js"/>"></script>
+	<script type="text/javascript" src="<c:url value="/resources/js/jquery.mask.min.js"/>"></script>
 	<link rel="stylesheet" type="text/css" href="<c:url value="resources/css/style.css"/>">
 	
 </head>
@@ -34,15 +35,15 @@
 
 			<form method="post" action="${linkTo[AgendamentoController].confirma}">
 				<ul>
-					<li><label for="contaOrigem">Conta de Origem:</label> <input
-						type="text" name="transferencia.contaOrigem" maxlength="7">
+					<li><label for="contaOrigem">Conta de Origem:</label> <input id="conta_origem"
+						type="text" name="transferencia.contaOrigem" maxlength="6">
 					
-					<li><label for="contaDestino">Conta Destino:</label> <input
-						type="text" name="transferencia.contaDestino" maxlength="7">
+					<li><label for="contaDestino">Conta Destino:</label> <input id="conta_destino"
+						type="text" name="transferencia.contaDestino" maxlength="6">
 					</li>
-					<li><label for="valor">Valor:</label> <input type="text"
+					<li><label for="valor">Valor:</label> <input type="text" id="valor"
 						name="transferencia.valor" maxlength="18"></li>
-					<li><label for="data">Data da Transferência:</label> <input
+					<li><label for="data">Data da Transferência:</label> <input id="data_agendamento"
 						type="text" name="transferencia.dataAgendamento" maxlength="10">
 					</li>
 					<li><label for="">Tipo:</label> <select id="tipo" name="transferencia.tipo.id">
@@ -94,6 +95,13 @@
 	</div>
 
 	<script type="text/javascript">
+		$(document).ready(function(){
+			$("#conta_origem").mask("00000-0");
+			$("#conta_destino").mask("00000-0");
+			$("#data_agendamento").mask("00/00/0000");
+			$("#valor").mask("000.000.000.000,00", {reverse: true});
+		});
+		
 // 		$(document).ready(function() {
 // 			$("#tipo").on('change',function(){
 // 				var self = $(this);  
