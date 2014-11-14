@@ -83,7 +83,7 @@ public class AgendamentoController {
 	private void validaCampos(Transferencia transferencia) {
 		if(transferencia.getTipo().getId() == null 
 				||transferencia.getTipo().getId() == 0){
-			validator.add(new I18nMessage("tipo", "campo.obrigatorio"));
+			validator.add(new I18nMessage("tipo", "campo.obrigatorio", "Tipo"));
 		}
 		validator.onErrorRedirectTo(this).transfere();
 	}

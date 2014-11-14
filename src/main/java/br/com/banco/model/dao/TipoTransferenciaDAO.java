@@ -3,6 +3,8 @@ package br.com.banco.model.dao;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.ejb.Stateless;
+
 import br.com.banco.model.TipoTransferencia;
 
 /**
@@ -10,7 +12,8 @@ import br.com.banco.model.TipoTransferencia;
  * @author Hanna
  *
  */
-public class TipoTransferenciaDAO {
+@Stateless
+public class TipoTransferenciaDAO extends GenericDAO {
 
 	/**
 	 * Recupera tipos de transferência cadastrados

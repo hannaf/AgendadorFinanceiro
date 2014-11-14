@@ -22,8 +22,7 @@
 			
 			<div class="erro">
 				<c:forEach items="${errors}" var="error">
-					<li>${error.category}:${error.message}</li>
-					
+					<li>${error.message}</li>
 				</c:forEach>
 			</div>
 			
@@ -95,6 +94,7 @@
 	</div>
 
 	<script type="text/javascript">
+	
 		$(document).ready(function(){
 			$("#conta_origem").mask("00000-0");
 			$("#conta_destino").mask("00000-0");

@@ -8,9 +8,10 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -22,6 +23,9 @@ import javax.validation.constraints.Size;
  */
 @Entity
 @Table(name="transferencia")
+@NamedQueries({
+	@NamedQuery(name="Transferencia.recuperaTransferencias", query="SELECT t FROM Transferencia t ")
+})
 public class Transferencia implements Serializable {
 
 	private static final long serialVersionUID = 1053016088998833390L;
@@ -37,23 +41,23 @@ public class Transferencia implements Serializable {
 	/**
 	 * Conda de origem
 	 */
-	@NotNull(message = "{campo.obrigatorio}")
-	@Size(min=5 , max=6, message="{conta.invalida}")
+	@NotNull(message = "{conta.origem.campo.obrigatorio}")
+	@Size(min=5 , max=6, message="{conta.origem.invalida}")
 	@Column(name="conta_origem")
 	private String contaOrigem;
 	
 	/**
 	 * Conda destino
 	 */
-	@NotNull(message = "{campo.obrigatorio}")
-	@Size(min=5 , max=6, message="{conta.invalida}")
+	@NotNull(message = "{conta.destino.campo.obrigatorio}")
+	@Size(min=5 , max=6, message="{conta.destino.invalida}")
 	@Column(name="conta_destino")
 	private String contaDestino;
 	
 	/**
 	 * Valor
 	 */
-	@NotNull(message = "{campo.obrigatorio}")
+	@NotNull(message = "{valor.campo.obrigatorio}")
 	@Digits(integer=12, fraction=2, message="{valor.invalido}")
 	@Column(name="vl_transferencia")
 	private BigDecimal valor;
@@ -67,15 +71,16 @@ public class Transferencia implements Serializable {
 	/**
 	 * Dada agendada para a transferência
 	 */
-	@NotNull(message = "{campo.obrigatorio}")
+	@NotNull(message = "{data.campo.obrigatorio}")
 	@Column(name="dt_transferencia")
 	private Date dataAgendamento;
 	
 	/**
 	 * Tipo de transferência
 	 */
-	@ManyToOne
-	@JoinColumn(name="id_tipo_transferencia")
+//	@ManyToOne
+//	@JoinColumn(name="id_tipo_transferencia")
+	@Transient
 	private TipoTransferencia tipo;
 
 	public Integer getId() {
