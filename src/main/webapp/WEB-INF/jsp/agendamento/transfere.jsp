@@ -64,6 +64,7 @@
 			<table cellpadding="3" cellspacing="0">
 				<thead>
 					<tr>
+						<td>Conta Origem</td>
 						<td>Conta Destino</td>
 						<td>Valor</td>
 						<td>Data Agendada</td>
@@ -74,6 +75,7 @@
 				<tbody>
 					<c:forEach items="${transferencias}" var="transferencia" varStatus="status">
 						<tr class="${(status.index % 2) == 0 ? 'linhapar':'linhaimpar'}">
+							<td>${transferencia.contaOrigem}</td>
 							<td>${transferencia.contaDestino}</td>
 							<td>${transferencia.valor}</td>
 							<td>${transferencia.dataAgendamento}</td>
