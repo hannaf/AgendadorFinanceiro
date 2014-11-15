@@ -54,9 +54,9 @@ public class TipoTransferenciaRepository {
 		case 3:
 			return calculoTipoC(valor, dtAgendamento);
 		case 4:
-			if (valor.compareTo(new BigDecimal("25000")) <= 0) {
+			if (new BigDecimal("25000").compareTo(valor) <= 0) {
 				return calculoTipoA(valor);
-			} else if (valor.compareTo(new BigDecimal("120000")) > 0) {
+			} else if (new BigDecimal("120000").compareTo(valor) > 0) {
 				return calculoTipoC(valor, dtAgendamento);
 			} else {
 				return calculoTipoB(dtAgendamento);
@@ -112,6 +112,15 @@ public class TipoTransferenciaRepository {
 		} else {
 			return valor.multiply(new BigDecimal("0.083"));
 		}
+	}
+
+	/**
+	 * Recupera tipo transferência por id
+	 * @param idTipo
+	 * @return
+	 */
+	public TipoTransferencia recuperaTipoTransferenciaId(Integer idTipo) {
+		return this.dao.recuperaTipoTransferenciaId(idTipo);
 	}
 
 }

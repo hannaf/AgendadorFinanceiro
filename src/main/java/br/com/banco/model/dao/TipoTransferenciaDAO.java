@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.Stateless;
+import javax.persistence.NoResultException;
 import javax.persistence.Query;
 
 import br.com.banco.model.TipoTransferencia;
@@ -63,6 +64,21 @@ public class TipoTransferenciaDAO extends GenericDAO {
 	public List<TipoTransferencia> recuperaTiposTransferencia() {
 		Query query = super.getEm().createNamedQuery("TipoTransferencia.recuperaTiposTransferencias");
 		return (List<TipoTransferencia>) query.getResultList();
+	}
+	
+	/**
+	 * Recupera tipo transferência por id
+	 * @param id
+	 * @return
+	 */
+	public TipoTransferencia recuperaTipoTransferenciaId(Integer id) {
+		Query query = super.getEm().createNamedQuery("TipoTransferencia.recuperaTipoTransferenciaId");
+		query.setParameter("id", id);
+		try {
+			return (TipoTransferencia) query.getSingleResult();
+		} catch(NoResultException e) {
+			return null;
+		}
 	}
 
 }

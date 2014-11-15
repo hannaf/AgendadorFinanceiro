@@ -68,8 +68,17 @@ public class TransferenciaFacade implements ITransferencia {
 	 * Recupera transferências cadastradas
 	 * @return List<Transferencia>
 	 */
+	@Override
 	public List<Transferencia> recuperaTransferencias() {
 		return this.transferenciaRepository.recuperaTransferencias();
+	}
+
+	/**
+	 * Recupera tipo transferência por id
+	 */
+	@Override
+	public TipoTransferencia recuperaTipoTransferenciaId(Integer idTipo) {
+		return this.tipoRepository.recuperaTipoTransferenciaId(idTipo);
 	}
 
 }

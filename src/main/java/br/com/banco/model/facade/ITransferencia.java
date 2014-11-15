@@ -40,5 +40,12 @@ public interface ITransferencia {
 	 * @return List<Transferencia>
 	 */
 	List<Transferencia> recuperaTransferencias();
+
+	/**
+	 * Recupera tipo transferência por id
+	 * @param idTipo
+	 * @return
+	 */
+	TipoTransferencia recuperaTipoTransferenciaId(Integer idTipo);
 	
 }
