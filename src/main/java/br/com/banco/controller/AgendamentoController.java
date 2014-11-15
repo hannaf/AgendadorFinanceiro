@@ -3,6 +3,7 @@ package br.com.banco.controller;
 import javax.inject.Inject;
 import javax.validation.Valid;
 
+import br.com.banco.SiteUtil;
 import br.com.banco.model.Transferencia;
 import br.com.banco.model.facade.ITransferencia;
 import br.com.caelum.vraptor.Controller;
@@ -84,6 +85,9 @@ public class AgendamentoController {
 		if(transferencia.getTipo().getId() == null 
 				||transferencia.getTipo().getId() == 0){
 			validator.add(new I18nMessage("tipo", "campo.obrigatorio", "Tipo"));
+		}
+		if(SiteUtil.calculaDias(transferencia.getDataAgendamento()) < 0){
+			validator.add(new I18nMessage("dataAgendamento", "data.agendamento.anterior", "Data Agendamento"));
 		}
 		validator.onErrorRedirectTo(this).transfere();
 	}
