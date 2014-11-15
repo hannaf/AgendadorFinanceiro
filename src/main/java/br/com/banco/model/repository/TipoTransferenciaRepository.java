@@ -28,6 +28,12 @@ public class TipoTransferenciaRepository {
 	 * @return List<TipoTransferencia>
 	 */
 	public List<TipoTransferencia> recuperaTiposTransferencia() {
+		//Mock
+		List<TipoTransferencia> tipos = this.dao.recuperaTiposTransferencia();
+		if(tipos.isEmpty()){
+			this.dao.cadastraTiposPadrao();
+		}
+		//
 		return this.dao.recuperaTiposTransferencia();
 	}
 	

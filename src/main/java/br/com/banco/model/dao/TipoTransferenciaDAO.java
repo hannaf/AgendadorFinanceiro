@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.Stateless;
+import javax.persistence.Query;
 
 import br.com.banco.model.TipoTransferencia;
 
@@ -14,14 +15,11 @@ import br.com.banco.model.TipoTransferencia;
  */
 @Stateless
 public class TipoTransferenciaDAO extends GenericDAO {
-
+	
 	/**
-	 * Recupera tipos de transferência cadastrados
-	 * @return List<TipoTransferencia>
+	 * Mock para criação de tipos de transferencia
 	 */
-	public List<TipoTransferencia> recuperaTiposTransferencia() {
-		//TODO Persistir em banco
-		
+	public void cadastraTiposPadrao(){
 		List<TipoTransferencia> tiposLista = new ArrayList<TipoTransferencia>();
 		
 		TipoTransferencia tipo = new TipoTransferencia();
@@ -46,15 +44,25 @@ public class TipoTransferenciaDAO extends GenericDAO {
 		tiposLista.add(tipo);
 		
 		tipo = new TipoTransferencia();
-		tipo.setId(1);
+		tipo.setId(4);
 		tipo.setNome("D");
 		tipo.setDescricao("Taxa igual a A, B ou C dependendo do valor da transferência. "
 				+ "Valores até $25.000 seguem a taxação tipo A. "
 				+ "Valores de $25.001 até $120.000 seguem a taxação tipo B. "
 				+ "Valores maiores que $120.000 seguem a taxação tipo C");
 		tiposLista.add(tipo);
-		
-		return tiposLista;
+		for (TipoTransferencia tipoTransferencia : tiposLista) {
+			super.getEm().persist(tipoTransferencia);			
+		}
+	}
+
+	/**
+	 * Recupera tipos de transferência cadastrados
+	 * @return List<TipoTransferencia>
+	 */
+	public List<TipoTransferencia> recuperaTiposTransferencia() {
+		Query query = super.getEm().createNamedQuery("TipoTransferencia.recuperaTiposTransferencias");
+		return (List<TipoTransferencia>) query.getResultList();
 	}
 
 }
