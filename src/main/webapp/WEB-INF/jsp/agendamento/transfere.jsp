@@ -51,7 +51,7 @@
 								<option value="${tipo.id}">${tipo.nome}</option>
 							</c:forEach>
 					</select></li>
-					<li><label for="taxa">Taxa:</label><p></p>
+					<li><label for="taxa_calculada">Taxa:</label><span class="taxa" id="taxa_calculada">0</span>
 					</li>
 				</ul>
 				<input type="submit" value="Confirmar">
@@ -104,31 +104,25 @@
 			$("#valor").mask("000.000.000.000,00", {reverse: true});
 		});
 		
-// 		$(document).ready(function() {
-// 			$("#tipo").on('change',function(){
-// 				var self = $(this);  
-// 			    var selecionado = self.val();
-// 			    var dataAgendamento = self.val();
-// 			    var valor = self.val();
-// 			    $.ajax({
-// 					url:'/transferencia/calculo',
-// 					data:{id:selecionado},
-// 					dataType:'json',
-// 			         success:function(data){  
-// 			             // Precisa transformar de json para objeto html  
-// 			             var options = [];  
-// 			             options.push(' <option>Selecione</option> '); // colocando a primeira option...  
-// 			             for (var i = 0; i < data.length; i++) {  
-// 			                options.push('<option value="'+data[i].id+'">'+data[i].nome+'</option>');  
-// 			             }  
-// 			             $('#cidadesSelect').html(options.join(''));  
-// 			          },  
-// 			          error:function(){  
-// 			             alert('erro');  
-// 			          }  
-// 				});
-// 			});
-// 		});
+		$(document).ready(function() {
+			$("#tipo").on('change', calculaTaxa);
+		});
+
+		calculaTaxa = function(){
+			var self = $(this);  
+		    var selecionado = self.val();
+		    var dataAgendamento = $("#data_agendamento").val();
+		    var valorTransacao = $("#valor").val();
+		    $.ajax({
+				url:'http://localhost:8080/agendador-financeiro/transferencia/calculo',
+				data:{idTipo: selecionado, dataTransferencia: dataAgendamento, valor: valorTransacao},
+				type:"GET",
+				dataType:'json',
+		         success:function(data){  
+		             $('#taxa_calculada').html(data);  
+		          }
+			});
+		};
 	</script>
 
 </body>

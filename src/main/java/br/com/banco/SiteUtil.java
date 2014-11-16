@@ -43,7 +43,7 @@ public class SiteUtil {
 	/**
 	 * Converte String para Date
 	 * @param data
-	 * @return
+	 * @return Date
 	 */
 	public static Date converteStringParaDate(String data) {
 		SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");

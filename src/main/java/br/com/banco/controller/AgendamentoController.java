@@ -19,6 +19,7 @@ import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Result;
+import br.com.caelum.vraptor.interceptor.IncludeParameters;
 import br.com.caelum.vraptor.validator.I18nMessage;
 import br.com.caelum.vraptor.validator.Validator;
 import br.com.caelum.vraptor.view.Results;
@@ -107,18 +108,35 @@ public class AgendamentoController {
 		validator.onErrorRedirectTo(this).transfere();
 	}
 
-	@Get("/transferencia/calculo")
-	public void calculaTaxa(Integer idTipo, String valor, String data) {
-		if (validaParametros(idTipo, valor, data)) {
+	/**
+	 * Calcula taxa ajax
+	 * @param idTipo
+	 * @param valor
+	 * @param data
+	 */
+	@Get
+	@Path("/transferencia/calculo")
+	@IncludeParameters
+	public void calculaTaxa(Integer idTipo, String valor, String dataTransferencia) {
+		if (validaParametros(idTipo, valor, dataTransferencia)) {
 			TipoTransferencia tipo = new TipoTransferencia();
 			tipo.setId(idTipo);
 			BigDecimal taxa = this.transferenciaFacade.calculaTaxa(tipo,
 					SiteUtil.converteStringParaBigDecimal(valor),
-					SiteUtil.converteStringParaDate(data));
+					SiteUtil.converteStringParaDate(dataTransferencia));
 			result.use(Results.json()).withoutRoot().from(taxa).serialize();
+		} else {
+			result.use(Results.json()).withoutRoot().from(0).serialize();
 		}
 	}
 
+	/**
+	 * 
+	 * @param idTipo
+	 * @param valor
+	 * @param data
+	 * @return true se os parametros são válidos
+	 */
 	private boolean validaParametros(Integer idTipo, String valor, String data) {
 		if (idTipo == null
 				|| (idTipo != null && this.transferenciaFacade
@@ -129,6 +147,9 @@ public class AgendamentoController {
 			return false;
 		}
 		if(data == null || (data != null && SiteUtil.converteStringParaDate(data) == null)){
+			return false;
+		}
+		if (SiteUtil.calculaDias(SiteUtil.converteStringParaDate(data)) < 0) {
 			return false;
 		}
 		return true;
