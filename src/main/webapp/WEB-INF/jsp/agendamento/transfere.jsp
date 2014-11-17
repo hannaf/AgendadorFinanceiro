@@ -59,7 +59,7 @@
 					<li><label for="taxa_calculada">Taxa:</label><span
 						class="taxa" id="taxa_calculada">0</span></li>
 				</ul>
-				<input type="submit" value="Confirmar">
+				<input type="submit" onclick="formataContas()" value="Confirmar">
 			</form>
 
 		</section>
@@ -81,12 +81,12 @@
 					<c:forEach items="${transferencias}" var="transferencia"
 						varStatus="status">
 						<tr class="${(status.index % 2) == 0 ? 'linhapar':'linhaimpar'}">
-							<td>${transferencia.contaOrigem}</td>
-							<td>${transferencia.contaDestino}</td>
-							<td>${transferencia.valor}</td>
-							<td>${transferencia.dataAgendamento}</td>
+							<td class="conta">${transferencia.contaOrigem}</td>
+							<td class="conta">${transferencia.contaDestino}</td>
+							<td class="valor">${transferencia.valor}</td>
+							<td class="data">${transferencia.dataAgendamentoFormatada}</td>
 							<td>${transferencia.tipo}</td>
-							<td>${transferencia.taxa}</td>
+							<td class="valor">${transferencia.taxa}</td>
 						</tr>
 					</c:forEach>
 					<c:if test="${transferencias.size() == 0}">
@@ -110,6 +110,11 @@
 			$("#valor").mask("000.000.000.000,00", {
 				reverse : true
 			});
+
+			$(".conta").mask("00000-0");
+			$(".conta").mask("00000-0");	
+			$(".valor").mask("000.000.000.000,00");		
+			$(".valor").mask("000.000.000.000,00");		
 		});
 
 		$(document).ready(function() {
@@ -149,6 +154,12 @@
 			}
 			return true;
 		};
+
+		formataContas = function (){
+			$("#conta_origem").val($("#conta_origem").val().replace("-",""));
+			$("#conta_destino").val($("#conta_destino").val().replace("-",""));
+		}
+		
 		//]]>
 	</script>
 

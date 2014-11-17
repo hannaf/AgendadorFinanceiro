@@ -83,7 +83,6 @@ public class AgendamentoController {
 	 * @param transferencia
 	 */
 	public void confirma(@Valid Transferencia transferencia) {
-		// TODO arrumar mensagens e validações
 		validator.onErrorRedirectTo(this).transfere();
 		validaCampos(transferencia);
 		this.transferenciaFacade.cadastraTransferencia(transferencia);

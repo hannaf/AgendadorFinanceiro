@@ -2,6 +2,7 @@ package br.com.banco.model;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -137,6 +138,11 @@ public class Transferencia implements Serializable {
 
 	public void setTipo(TipoTransferencia tipo) {
 		this.tipo = tipo;
+	}
+	
+	public String getDataAgendamentoFormatada(){
+		SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+		return format.format(dataAgendamento);
 	}
 
 }
