@@ -113,8 +113,12 @@
 
 			$(".conta").mask("00000-0");
 			$(".conta").mask("00000-0");	
-			$(".valor").mask("000.000.000.000,00");		
-			$(".valor").mask("000.000.000.000,00");		
+			$(".valor").mask("000.000.000.000,00", {
+				reverse : true
+			});		
+			$(".valor").mask("000.000.000.000,00", {
+				reverse : true
+			});		
 		});
 
 		$(document).ready(function() {
